@@ -37,7 +37,20 @@ const End = styled.p`
   transform: translate(-50%, -50%);
 `;
 
-const Btn = styled.button`
+const ResetBtn = styled.button`
+  margin-top: 20px;
+  border: none;
+  padding: 10px 30px 10px 30px;
+  border-radius: 5px;
+  background: #eaeaea;
+
+  &:hover {
+    background: #d3d3d3;
+  }
+
+  &:active {
+    background: #b8b8b8;
+  }
 `;
 
 const NumWrapper = styled.div`
@@ -186,6 +199,8 @@ const Minesweeper = () => {
       row.map((col, c) => {
         if (col < 0) {
           state[r][c] = 4;
+        } else {
+          state[r][c] = 3;
         }
       });
     });
@@ -277,7 +292,7 @@ const Minesweeper = () => {
         <NumLabel>Mines</NumLabel>
         <NumInput ref={minesCount} defaultValue={10}/>
       </NumWrapper>
-      <Btn onClick={reset}>reset</Btn>
+      <ResetBtn onClick={reset}>reset</ResetBtn>
       {
         notice ? <p style={{color: "red"}}> Too many mines! Max: {maxMines} </p> : <></>
       }
